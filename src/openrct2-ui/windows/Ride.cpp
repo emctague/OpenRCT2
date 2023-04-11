@@ -6782,7 +6782,7 @@ static void WindowRideIncomePaint(WindowBase* w, DrawPixelInfo* dpi)
 
         DrawTextBasic(*dpi, screenCoords, stringId, ft);
     }
-    screenCoords.y += 44;
+    screenCoords.y += 44 - LIST_ROW_HEIGHT;
 
     // Secondary item profit / loss per item sold
     secondaryItem = ride->GetRideTypeDescriptor().PhotoItem;
@@ -6825,6 +6825,14 @@ static void WindowRideIncomePaint(WindowBase* w, DrawPixelInfo* dpi)
     ft.Add<money64>(costPerHour);
     DrawTextBasic(*dpi, screenCoords, stringId, ft);
     screenCoords.y += LIST_ROW_HEIGHT;
+
+    // Maximum ride price before peeps won't pay
+    if (ride->value != MONEY64_UNDEFINED && ride->value != 0) {
+        ft = Formatter();
+        ft.Add<money64>(ride->value * 2);
+        DrawTextBasic(*dpi, screenCoords, STR_MAX_RIDE_ENTRY_PRICE, ft);
+        screenCoords.y += LIST_ROW_HEIGHT;
+    }
 
     // Profit per hour
     if (ride->profit != MONEY64_UNDEFINED)

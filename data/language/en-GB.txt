@@ -3679,6 +3679,7 @@ STR_6573    :Invisible
 STR_6574    :Void
 STR_6575    :Allow special colour schemes
 STR_6576    :Adds special colours to colour dropdown
+STR_6577    :{WINDOW_COLOUR_2}Maximum price: {BLACK}{CURRENCY2DP}
 
 #############
 # Scenarios #
